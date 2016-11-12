@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <title>登録画面</title>
+        <link rel="stylesheet" href="sample.css">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+    <head>
+<body>
+    <header class="header">
+        <h1>仮登録</h1>
+    </header>
+    <div class="wrapper clearfix">
+        <main class="main">
+            <form action="./sample.php" method="post" onsubmit="return FormCheck(this)">
+            名前<br><input type="text" name="username"><nobr id = "alert_username"></nobr><br>
+            メールアドレス<br><input type="text" name="mail"><nobr id = "alert_mail"></nobr><br>
+            <input type="submit" value="メール送信">
+            </form>
+        </main>
+        <div class="sidemenu">
+
+        </div>
+    </div>
+    <footer class="footer">
+
+    </footer>
+
+    <script type="text/javascript">
+        // フォームチェック
+        function FormCheck() {
+            if( ( FormCheck_username() & FormCheck_mail() ) == false){
+                return false;
+            }
+            return true;
+        }
+        function FormCheck_username() {
+            var val_n = document.getElementsByName("username")[0];
+            if (val_n.value.length == 0 ) {
+                document.getElementById("alert_username").innerHTML = "必須入力です" ;
+                val_n.focus();
+                return false;
+            }
+            document.getElementById("alert_username").innerHTML = "" ;
+            return true;
+        }
+        function FormCheck_mail() {
+            var val_m = document.getElementsByName("mail")[0];
+            if (val_m.value.length == 0 ) {
+                document.getElementById("alert_mail").innerHTML = "必須入力です" ;
+                val_m.focus();
+                return false;
+            }
+            if (!val_m.value.match( /^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-])+([a-zA-Z0-9_-])+$/ ) ) {
+                document.getElementById("alert_mail").innerHTML = "入力値が間違っています" ;
+                val_m.focus();
+                return false;
+            }
+            document.getElementById("alert_mail").innerHTML = "" ;
+            return true;
+        }
+    </script>
+
+</body>
+
+
+    
